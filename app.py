@@ -4,6 +4,7 @@ from datetime import datetime
 import cv2
 import requests
 from flask import Flask, request
+from flask_cors import CORS
 
 
 import numpy as np
@@ -26,6 +27,8 @@ logging.basicConfig(
 logging.info("Start server")
 
 app = Flask(__name__)
+CORS(app)
+
 MEGABYTE = (2 ** 10) ** 2
 app.config['MAX_CONTENT_LENGTH'] = None
 app.config['MAX_FORM_MEMORY_SIZE'] = 50 * MEGABYTE
@@ -50,7 +53,7 @@ def analyze():
     video_path = None
     data = request.get_json()
     logging.info(data)   
-    email_address     = data.get("email", None)
+    email_address = data.get("email", None)
     b64str_video = data.get("videob64", None)
     user_name = data.get("name", None)
     if b64str_video:
