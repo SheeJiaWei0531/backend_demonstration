@@ -18,6 +18,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . /app/
 
-EXPOSE 15400
+EXPOSE 13520
 
-CMD ["gunicorn", "-b", "0.0.0.0:15400", "app:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:13520", "app:app"]
